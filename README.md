@@ -1,22 +1,28 @@
-# Panel Note
-![screenshot](./images/screen1.png)
+# Panel Command
 
-Add a small note to your GNOME panel. 
+![1711381368572](images/1711381368572.png)
 
-[<img src="https://github.com/GittyMac/PanelNote/assets/28932047/e4bec66e-ee85-40d6-b7e5-95cbdc781e27" height="100">](https://extensions.gnome.org/extension/6718/panel-note/)
-
-
-> [!NOTE]
-> This extension is inspired by the macOS app "One Thing."
+Add a command output (and a button to set command) to your GNOME panel.
 
 ## Usage
-![screenshot](./images/screen2.png)
 
-When you enable the extension, the default note will appear on your panel. To edit the note, simply click on the note and type in your new note.
+Clone this repo
 
-## Warning
+Currently this extension has no settings gui. Except the command, change settings should change source code and rebuild
 
-Please note that once you change something, the command is executed immediately, which may lead to dangerous commands being executed incorrectly, so it is recommended to always copy and paste to change the command
+- The text in button: `text: '⌘',` at line 39 in `extension.js`
+- Place of the command output label: `boxes['center'].insert_child_at_index(this.noteInPanel, gravities['center']);` at line 71 in `extension.js`
+- Polling interval: `}, 1000);` at line 106 in `extension.js`
+
+Build and install by running `make && make install`
+
+Logout and re-login, then go to extensions to enable this extension
+
+You can click `⌘` button to modify the command
+
+**Warning**: Please note that once you change something, the command is executed immediately, which may lead to dangerous commands being executed incorrectly, so it is recommended to always copy and paste to change the command
+
+To use preset scripts (in `scripts/`), `chmod +x ` it and paste the path to the input box
 
 ## Acknowledgments
 
@@ -26,14 +32,3 @@ In building this project, we would like to acknowledge the contributions of the 
 - https://github.com/xelad0m/just-another-search-bar
 - https://github.com/fablevi/OnTheTop/blob/main/schemas/org.gnome.shell.extensions.on-the-top.gschema.xml
 - https://github.com/corecoding/Vitals/blob/c2348f1da1668bc6cf421b7cf7c73ceb86c1dfdc/extension.js#L300
-
-```shell
-gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/shell/extensions/FocusedWindow --method org.gnome.shell.extensions.FocusedWindow.Get | sed 's/^\(.*\)$/\1/' | awk '{print substr($0, 3, length($0)-5)}' | jq -r '.title' | awk '{ if ($0 == "null") { print "" } else { print $0 } }'
-```
-
-```shell
-```
-
-```shell
-gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/shell/extensions/FocusedWindow --method org.gnome.shell.extensions.FocusedWindow.Get | sed 's/^\(.*\)$/\1/' | awk '{print substr($0, 3, length($0)-5)}' | jq -r '.title' | awk '{ if ($0 == "null") { system("curl https://v1.hitokoto.cn/?encode=text&c=i") } else { print $0 } }'
-```

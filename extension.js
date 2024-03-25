@@ -69,6 +69,8 @@ const Indicator = GObject.registerClass(
             // boxes['left'].insert_child_at_index(this.noteInPanel, gravities['left']);
             // boxes['right'].insert_child_at_index(this.noteInPanel, gravities['right']);
             boxes['center'].insert_child_at_index(this.noteInPanel, gravities['center']);
+            // boxes['left'].insert_child_at_index(this.noteInPanel, gravities['far_left']);
+            // boxes['right'].insert_child_at_index(this.noteInPanel, gravities['far_right']);
 
             /* ----------------------------- Command Entry Box ----------------------------- */
             this.entry = new St.Entry({
