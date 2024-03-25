@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+
+  <schema id="org.gnome.shell.extensions.panelcommand" path="/org/gnome/shell/extensions/panelcommand/">
+
+    <!-- See also: https://developer.gnome.org/glib/stable/gvariant-format-strings.html -->
+
+    <key type="s" name="command">
+      <default>"echo change me ~$RANDOM~"</default>
+      <summary>The command that is showing on the panel.</summary>
+    </key>
+  </schema>
+</schemalist>

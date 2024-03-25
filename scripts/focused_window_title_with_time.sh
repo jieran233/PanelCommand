@@ -1,0 +1,2 @@
+#!/bin/bash
+gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/shell/extensions/FocusedWindow --method org.gnome.shell.extensions.FocusedWindow.Get | sed 's/^\(.*\)$/\1/' | awk '{print substr($0, 3, length($0)-5)}' | jq -r '.title' | awk '{ if ($0 == "null") { system("date \"+%m-%d %H:%M\"") } else { print $0 } }'
