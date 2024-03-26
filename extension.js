@@ -165,6 +165,8 @@ export default class IndicatorExampleExtension extends Extension {
     disable() {
         this._indicator.entry.disconnect();
         this._indicator.destroy();
+        this._indicator.buttonInPanel.destroy();
+        this._indicator.noteInPanel.destroy();
         this._indicator = null;
         this._settings = null;
     }
